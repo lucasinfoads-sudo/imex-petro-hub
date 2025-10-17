@@ -1,6 +1,6 @@
 const StatsSection = () => {
   const stats = [
-    { prefix: "+", number: "5", label: "anos de experiência" },
+    { prefix: "+", number: "30", label: "anos de experiência" },
     { prefix: "+", number: "10", unit: "MIL", label: "entregas realizadas" },
     { prefix: "+", number: "15", label: "cidades atendidas em SC" },
     { prefix: "+", number: "200", label: "empresas parceiras" },
