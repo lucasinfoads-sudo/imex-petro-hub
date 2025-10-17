@@ -23,10 +23,11 @@ const PartnersSection = () => {
             return (
               <div
                 key={index}
-                className="flex flex-col items-center gap-3 hover-scale"
+                className="flex flex-col items-center gap-3 hover-scale animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Icon className="w-8 h-8 text-primary" />
+                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-smooth">
+                  <Icon className="w-10 h-10 text-primary" />
                 </div>
                 <span className="text-lg font-semibold text-foreground">
                   {segment.name}
@@ -36,7 +37,7 @@ const PartnersSection = () => {
           })}
         </div>
         <div className="text-center">
-          <Button className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold px-8">
+          <Button className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold px-8 shadow-elegant hover:shadow-[0_10px_40px_hsl(var(--primary)/0.4)] transition-smooth">
             Falar com um especialista
           </Button>
         </div>

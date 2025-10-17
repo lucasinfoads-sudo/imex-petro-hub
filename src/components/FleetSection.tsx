@@ -1,0 +1,64 @@
+import { useState } from "react";
+import { Dialog, DialogContent } from "./ui/dialog";
+import sedeImage from "@/assets/sede-ganhe-tempo.jpg";
+import teamImage from "@/assets/team-ganhe-tempo.jpg";
+import deliveryTeamImage from "@/assets/delivery-team.jpg";
+
+const FleetSection = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const images = [
+    { src: deliveryTeamImage, alt: "Equipe de entrega Ganhe Tempo uniformizada" },
+    { src: sedeImage, alt: "Sede da Ganhe Tempo Logística" },
+    { src: teamImage, alt: "Time Ganhe Tempo" },
+  ];
+
+  return (
+    <>
+      <section className="py-16 gradient-section">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Nossa <span className="text-primary">Estrutura</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-lg shadow-card hover:shadow-elegant transition-smooth cursor-pointer animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => setSelectedImage(image.src)}
+              >
+                <div className="aspect-video">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-smooth"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-smooth flex items-end">
+                  <p className="text-white font-semibold p-4 text-sm md:text-base">
+                    {image.alt}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl p-0 overflow-hidden">
+          {selectedImage && (
+            <img
+              src={selectedImage}
+              alt="Imagem ampliada"
+              className="w-full h-auto"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
+
+export default FleetSection;
