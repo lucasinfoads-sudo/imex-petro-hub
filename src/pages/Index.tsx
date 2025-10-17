@@ -1,15 +1,16 @@
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import IdentificationSection from "@/components/IdentificationSection";
-import CredibilitySection from "@/components/CredibilitySection";
+import StatsSection from "@/components/StatsSection";
+import PartnersSection from "@/components/PartnersSection";
 import FeaturesSection from "@/components/FeaturesSection";
-import ExclusivitySection from "@/components/ExclusivitySection";
 import SolutionsSection from "@/components/SolutionsSection";
-import OfferSection from "@/components/OfferSection";
-import GuaranteeSection from "@/components/GuaranteeSection";
+import ClientsSection from "@/components/ClientsSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import BenefitsSection from "@/components/BenefitsSection";
 import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
+import BlogSection from "@/components/BlogSection";
+import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -19,15 +20,16 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <IdentificationSection />
-        <CredibilitySection />
+        <StatsSection />
+        <PartnersSection />
         <FeaturesSection />
-        <ExclusivitySection />
         <SolutionsSection />
-        <OfferSection />
-        <GuaranteeSection />
+        <ClientsSection />
+        <TestimonialSection />
+        <BenefitsSection />
         <FAQSection />
-        <ContactSection />
+        <BlogSection />
+        <NewsletterSection />
       </main>
       <Footer />
     </div>

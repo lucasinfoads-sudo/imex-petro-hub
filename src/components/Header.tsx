@@ -4,10 +4,10 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const Header = () => {
   const navItems = [
-    { label: "Sobre", href: "#sobre" },
-    { label: "Serviços", href: "#servicos" },
+    { label: "Quem Somos", href: "#sobre" },
+    { label: "Soluções", href: "#servicos" },
     { label: "Diferenciais", href: "#diferenciais" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Conteúdo", href: "#conteudo" },
     { label: "Contato", href: "#contato" },
   ];
 

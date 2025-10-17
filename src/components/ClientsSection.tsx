@@ -2,11 +2,11 @@ import { Button } from "./ui/button";
 
 const ClientsSection = () => {
   const clients = [
-    "Delta",
-    "Potencial",
-    "Charrua",
-    "Grupo Magnólia",
-    "RodOil",
+    "Farmácias Regionais",
+    "Clínicas Médicas",
+    "Escritórios de Advocacia",
+    "Lojas de Varejo",
+    "Distribuidoras",
   ];
 
   return (
@@ -14,13 +14,13 @@ const ClientsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-primary">+6 MIL</span> CLIENTES SATISFEITOS
+            <span className="text-primary">+200</span> EMPRESAS PARCEIRAS
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            com o sistema para postos de combustível e conveniência, queremos que você faça parte
+            Empresas que confiam na Ganhe Tempo para suas entregas estratégicas
           </p>
           <Button className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold px-8">
-            QUERO SER XPERT
+            QUERO SER PARCEIRO
           </Button>
         </div>
 
@@ -28,7 +28,7 @@ const ClientsSection = () => {
           {clients.map((client, index) => (
             <div
               key={index}
-              className="text-xl font-bold text-muted-foreground hover:text-primary transition-smooth"
+              className="text-xl font-bold text-muted-foreground hover:text-primary transition-smooth text-center"
             >
               {client}
             </div>

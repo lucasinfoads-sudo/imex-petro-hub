@@ -4,20 +4,20 @@ import { Button } from "./ui/button";
 const BenefitsSection = () => {
   const benefits = [
     {
-      title: "Autoridade total",
-      description: "Focados apenas no segmento de postos de combustíveis.",
+      title: "Operação personalizada",
+      description: "Cada empresa tem sua rotina — nós ajustamos tudo a ela.",
     },
     {
-      title: "Flexível e multibandeira",
-      description: "Homologado nas principais bandeiras de postos.",
+      title: "Central de controle ativa",
+      description: "Monitoramento constante e respostas imediatas.",
     },
     {
-      title: "100% seguro",
-      description: "Antecipamos todas as exigências legais e fiscais em todo o Brasil.",
+      title: "Gestão próxima",
+      description: "Profissionais acompanhados, uniformizados e orientados.",
     },
     {
-      title: "Contrato sem cláusula de fidelidade",
-      description: "Porque é essa a confiança que temos com a nossa solução.",
+      title: "Expansão planejada",
+      description: "Crescimento consistente com o mesmo padrão em cada cidade.",
     },
   ];
 
@@ -25,8 +25,8 @@ const BenefitsSection = () => {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Não é à toa que somos o{" "}
-          <span className="text-primary">maior sistema para posto de combustível</span> do mercado
+          ⚙️ O que faz a Ganhe Tempo{" "}
+          <span className="text-primary">diferente</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">

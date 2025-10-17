@@ -1,9 +1,9 @@
 const StatsSection = () => {
   const stats = [
-    { prefix: "+", number: "30", label: "anos de experiência" },
-    { prefix: "+", number: "6", unit: "MIL", label: "clientes" },
-    { prefix: "+", number: "100", label: "distribuidores oficiais em todo o Brasil" },
-    { prefix: "+", number: "100", unit: "MIL", label: "usuários ativos" },
+    { prefix: "+", number: "5", label: "anos de experiência" },
+    { prefix: "+", number: "10", unit: "MIL", label: "entregas realizadas" },
+    { prefix: "+", number: "15", label: "cidades atendidas em SC" },
+    { prefix: "+", number: "200", label: "empresas parceiras" },
   ];
 
   return (
