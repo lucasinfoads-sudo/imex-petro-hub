@@ -1,87 +1,71 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Button } from "./ui/button";
-import { Smartphone } from "lucide-react";
+import { Truck, Pill, Headphones, BarChart3, Route } from "lucide-react";
+import { Card, CardContent } from "./ui/card";
 
 const SolutionsSection = () => {
   const solutions = [
     {
-      id: "mobile",
-      label: "xpert smart mobile",
-      title: "xpert smart mobile: gerencie o seu posto de qualquer lugar",
-      description:
-        "O aplicativo xpert smart mobile foi pensado para você ter todas as funcionalidades para otimizar seu posto de combustível e loja de convivência de onde você estiver, direto pelo seu celular.",
+      icon: Truck,
+      title: "Coleta e entrega expressa",
+      description: "Agilidade e controle digital em cada etapa.",
     },
     {
-      id: "cash",
-      label: "xpert smart cash",
-      title: "xpert smart cash: controle de caixa inteligente",
-      description:
-        "Gerencie o fluxo de caixa do seu posto com precisão e segurança.",
+      icon: Pill,
+      title: "Transporte de medicamentos e documentos",
+      description: "Cuidado e rastreabilidade total em entregas sensíveis.",
     },
     {
-      id: "pay",
-      label: "xpert smart pay",
-      title: "xpert smart pay: pagamentos modernos",
-      description:
-        "Aceite todas as formas de pagamento de forma integrada e segura.",
+      icon: Headphones,
+      title: "Suporte direto com a equipe",
+      description: "Comunicação fácil e resolução rápida quando você precisar.",
     },
     {
-      id: "business",
-      label: "xpert smart business",
-      title: "xpert smart business: inteligência de negócio",
-      description:
-        "Análises e relatórios completos para tomada de decisões estratégicas.",
+      icon: BarChart3,
+      title: "Relatórios mensais",
+      description: "Transparência real sobre performance e prazos.",
     },
     {
-      id: "checkout",
-      label: "xpert smart checkout",
-      title: "xpert smart checkout: vendas rápidas",
-      description:
-        "Agilize o atendimento na loja de conveniência com nosso PDV moderno.",
+      icon: Route,
+      title: "Planejamento logístico personalizado",
+      description: "Crescimento previsível e organizado para seu negócio.",
     },
   ];
 
   return (
-    <section className="py-16 bg-muted/30">
+    <section id="servicos" className="py-16 md:py-24 gradient-section">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          Totalmente dedicado <span className="text-primary">às necessidades do seu segmento</span>
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            🚀 O que você recebe ao ter a Ganhe Tempo{" "}
+            <span className="text-primary">como parceira.</span>
+          </h2>
+        </div>
 
-        <Tabs defaultValue="mobile" className="mt-12">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 h-auto gap-2 bg-transparent">
-            {solutions.map((solution) => (
-              <TabsTrigger
-                key={solution.id}
-                value={solution.id}
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {solutions.map((solution, index) => {
+            const Icon = solution.icon;
+            return (
+              <Card
+                key={index}
+                className="hover:shadow-elegant transition-smooth bg-white"
               >
-                {solution.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+                <CardContent className="p-8">
+                  <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                    <Icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{solution.title}</h3>
+                  <p className="text-muted-foreground">{solution.description}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
 
-          {solutions.map((solution) => (
-            <TabsContent key={solution.id} value={solution.id} className="mt-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                    {solution.title}
-                  </h3>
-                  <p className="text-lg text-muted-foreground mb-6">
-                    {solution.description}
-                  </p>
-                  <Button className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold">
-                    CONHECER A SOLUÇÃO
-                  </Button>
-                </div>
-                <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-12 flex items-center justify-center">
-                  <Smartphone className="w-32 h-32 text-primary" />
-                </div>
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
+        <div className="text-center">
+          <p className="text-xl md:text-2xl font-bold text-foreground">
+            💡 Entregar mais rápido é bom.{" "}
+            <span className="text-primary">Entregar com inteligência é melhor.</span>
+          </p>
+        </div>
       </div>
     </section>
   );

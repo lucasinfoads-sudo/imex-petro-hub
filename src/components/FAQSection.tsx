@@ -3,68 +3,52 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./ui/accordion";
+} from "@/components/ui/accordion";
 
 const FAQSection = () => {
   const faqs = [
     {
-      question: "O que é um sistema para posto de combustível?",
+      question: "Atuam só em Itajaí?",
       answer:
-        "Esse sistema auxilia na gestão e operação de postos de combustível e lojas de conveniência, incluindo funcionalidades como controle de estoque, vendas, emissão de notas fiscais e atendimento ao cliente.",
+        "Não. Já atendemos diversas cidades de Santa Catarina e seguimos expandindo nossa área de cobertura mantendo o mesmo padrão de qualidade.",
     },
     {
-      question: "Como funciona um sistema para posto de combustível?",
+      question: "Que tipo de entregas fazem?",
       answer:
-        "O sistema integra todas as operações do posto, desde o abastecimento até a loja de conveniência, fornecendo relatórios em tempo real e automatizando processos.",
+        "Medicamentos, documentos, itens corporativos e produtos sensíveis. Nossa equipe é treinada para lidar com entregas que exigem cuidado especial e rastreabilidade total.",
     },
     {
-      question: "Quais são os benefícios de um sistema para posto de combustível?",
+      question: "Como é feita a parceria?",
       answer:
-        "Os principais benefícios incluem maior controle operacional, redução de perdas, otimização de estoque, facilidade na gestão financeira e conformidade fiscal.",
+        "Começamos com um diagnóstico gratuito das suas necessidades, depois montamos um contrato transparente com valores claros e oferecemos acompanhamento em tempo real de todas as entregas.",
     },
     {
-      question: "Qual o melhor sistema para posto de combustível?",
+      question: "E se houver imprevisto?",
       answer:
-        "O xpert é o sistema líder de mercado, com mais de 30 anos de experiência e 6 mil clientes satisfeitos em todo o Brasil.",
-    },
-    {
-      question: "Como funciona o sistema TEF do xpert?",
-      answer:
-        "O sistema TEF (Transferência Eletrônica de Fundos) está integrado ao PDV, permitindo processar pagamentos com cartões de forma rápida e segura.",
-    },
-    {
-      question: "Quanto tempo dura a implantação?",
-      answer:
-        "O tempo de implantação varia de acordo com o tamanho do posto, mas geralmente leva de 2 a 4 semanas, incluindo treinamento completo da equipe.",
-    },
-    {
-      question: "O sistema xpert é homologado nas bandeiras de posto de gasolina?",
-      answer:
-        "Sim, o xpert é homologado nas principais bandeiras: Petrobras, Shell e Ipiranga, entre outras.",
+        "Nossa equipe age na hora — resolvemos antes de virar problema. Temos central de controle ativa e comunicação direta para responder imediatamente a qualquer situação.",
     },
   ];
 
   return (
-    <section className="py-16 gradient-section">
+    <section id="faq" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Saiba mais sobre sistema para postos
-          <br />
-          de combustível e conveniência
-        </h2>
-
-        <Accordion type="single" collapsible className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left hover:text-primary">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            ❓ <span className="text-primary">Dúvidas frequentes.</span>
+          </h2>
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left text-lg font-semibold">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   );

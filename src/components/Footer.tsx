@@ -1,62 +1,65 @@
-import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
-  const solutions = [
-    "Sistema xpert web",
-    "xpert smart mobile",
-    "xpert smart cash",
-    "xpert smart pay",
-    "xpert smart business",
-    "xpert smart checkout",
+  const services = [
+    { name: "Coleta e Entrega Expressa", href: "#servicos" },
+    { name: "Transporte de Medicamentos", href: "#servicos" },
+    { name: "Entregas Corporativas", href: "#servicos" },
+    { name: "Diagnóstico Gratuito", href: "#contato" },
   ];
 
-  const content = ["Blog", "eBooks"];
+  const company = [
+    { name: "Sobre Nós", href: "#sobre" },
+    { name: "Diferenciais", href: "#diferenciais" },
+    { name: "FAQ", href: "#faq" },
+    { name: "Contato", href: "#contato" },
+  ];
 
-  const company = ["Quem somos", "Parceiros", "Seja um distribuidor", "Contato"];
+  const socialLinks = [
+    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+  ];
 
   return (
-    <footer className="bg-foreground text-background py-16">
+    <footer className="bg-primary text-primary-foreground py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-bold mb-6">xpert</h3>
-            <div className="space-y-3">
-              <p>
-                <span className="text-primary">E-mail:</span>{" "}
-                <a href="mailto:contato@xpert.com.br" className="hover:text-primary transition-smooth">
-                  contato@xpert.com.br
+            <h3 className="text-2xl font-bold mb-4">GANHE TEMPO</h3>
+            <p className="mb-4 text-primary-foreground/80">
+              Logística inteligente para empresas que valorizam cada entrega.
+            </p>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                <a href="mailto:contato@ganhetempo.com.br" className="hover:text-accent transition-smooth text-sm">
+                  contato@ganhetempo.com.br
                 </a>
-              </p>
-              <p>
-                <span className="text-primary">Telefone:</span>{" "}
-                <a href="tel:+554621010101" className="hover:text-primary transition-smooth">
-                  (46) 2101-0101
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                <a href="tel:+5547999999999" className="hover:text-accent transition-smooth text-sm">
+                  (47) 99999-9999
                 </a>
-              </p>
-            </div>
-            <div className="flex gap-4 mt-6">
-              <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-dark transition-smooth">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-dark transition-smooth">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-dark transition-smooth">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-dark transition-smooth">
-                <Youtube className="w-5 h-5" />
-              </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                <span className="text-sm">Itajaí, SC</span>
+              </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Soluções</h4>
+            <h4 className="font-bold mb-4">Serviços</h4>
             <ul className="space-y-2">
-              {solutions.map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-background/80 hover:text-primary transition-smooth">
-                    {item}
+              {services.map((service) => (
+                <li key={service.name}>
+                  <a
+                    href={service.href}
+                    className="text-primary-foreground/80 hover:text-accent transition-smooth text-sm"
+                  >
+                    {service.name}
                   </a>
                 </li>
               ))}
@@ -64,35 +67,43 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Conteúdo</h4>
-            <ul className="space-y-2">
-              {content.map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-background/80 hover:text-primary transition-smooth">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-lg mb-4">Quem somos</h4>
+            <h4 className="font-bold mb-4">Empresa</h4>
             <ul className="space-y-2">
               {company.map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-background/80 hover:text-primary transition-smooth">
-                    {item}
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="text-primary-foreground/80 hover:text-accent transition-smooth text-sm"
+                  >
+                    {item.name}
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="mt-6">
-              <a href="#" className="text-background/80 hover:text-primary transition-smooth">
-                Política de Privacidade
-              </a>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-4">Siga-nos</h4>
+            <div className="flex gap-4">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground p-3 rounded-full transition-smooth"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
+        </div>
+
+        <div className="border-t border-primary-foreground/20 pt-8 text-center text-sm text-primary-foreground/60">
+          <p>&copy; {new Date().getFullYear()} Ganhe Tempo Logística. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

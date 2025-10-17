@@ -1,67 +1,66 @@
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Fuel, DollarSign, Package, TrendingUp, Users } from "lucide-react";
+import { Settings, Radio, Users, Headphones, TrendingUp } from "lucide-react";
+import { Card, CardContent } from "./ui/card";
 
 const FeaturesSection = () => {
   const features = [
     {
-      icon: Fuel,
-      title: "Gestão de ponta a ponta do posto de combustível",
-      description:
-        "Administre com inteligência todas as operações do seu posto. Acompanhe todas as informações da loja e posto, com análise e relatórios integrados.",
+      icon: Settings,
+      title: "Operação personalizada",
+      description: "Cada empresa tem sua rotina — nós ajustamos tudo a ela.",
     },
     {
-      icon: DollarSign,
-      title: "Administrativo e financeiro",
-      description:
-        "Processos organizados e otimizados de forma eficiente. Disponibilize todos os dados e agilize processos de cobranças e pagamento.",
-    },
-    {
-      icon: Package,
-      title: "PDV para postos de gasolina",
-      description:
-        "Agilidade para atender bem os clientes. Oferece ao cliente facilidade na hora de efetuar o pagamento de combustível e na loja de conveniência.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Estoque de postos de combustíveis",
-      description:
-        "Maximize preços e margens. Cadastre preços atualizados e informações dos produtos. Mantenha organizado e atualizado.",
+      icon: Radio,
+      title: "Central de controle ativa",
+      description: "Monitoramento constante e respostas imediatas.",
     },
     {
       icon: Users,
-      title: "Controle e fiscal em gestão de postos",
-      description:
-        "Simplifique rotinas contábeis e fiscais. Controle a emissão de notas fiscais e gerencie notas fiscais de entrada e saída.",
+      title: "Gestão próxima dos entregadores",
+      description: "Profissionais acompanhados, uniformizados e orientados.",
+    },
+    {
+      icon: Headphones,
+      title: "Atendimento humano e resolutivo",
+      description: "Nada de robôs; quem liga fala com quem resolve.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Expansão planejada",
+      description: "Crescimento consistente, com o mesmo padrão em cada cidade.",
     },
   ];
 
   return (
-    <section className="py-16 gradient-section">
+    <section id="diferenciais" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          O sistema para postos e conveniências da xpert
-        </h2>
-        <p className="text-xl text-center text-muted-foreground mb-12">
-          já é a principal escolha do mercado
-        </p>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            ⚙️ O que faz a Ganhe Tempo <span className="text-primary">diferente.</span>
+          </h2>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="shadow-card hover:shadow-elegant transition-smooth border-2 hover:border-primary/20"
-            >
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <Card
+                key={index}
+                className="hover:shadow-elegant transition-smooth border-primary/10 hover:border-primary/30"
+              >
+                <CardContent className="p-6">
+                  <Icon className="w-12 h-12 text-primary mb-4" />
+                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+
+        <div className="text-center">
+          <p className="text-xl md:text-2xl font-bold text-primary italic">
+            "A logística certa não é a mais rápida. É a que nunca falha."
+          </p>
         </div>
       </div>
     </section>
