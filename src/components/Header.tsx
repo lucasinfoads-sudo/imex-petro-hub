@@ -1,6 +1,7 @@
 import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import logoGanheTempo from "@/assets/logo-ganhe-tempo.jpg";
 
 const Header = () => {
   const navItems = [
@@ -16,9 +17,11 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
-            <h1 className="text-2xl md:text-3xl font-extrabold text-primary">
-              GANHE TEMPO
-            </h1>
+            <img 
+              src={logoGanheTempo} 
+              alt="Ganhe Tempo Logística" 
+              className="h-12 md:h-16 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Navigation */}

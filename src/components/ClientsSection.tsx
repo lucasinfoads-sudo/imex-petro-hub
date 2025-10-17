@@ -66,7 +66,7 @@ const ClientsSection = () => {
                   <img
                     src={client.logo}
                     alt={`Logo ${client.name}`}
-                    className="max-h-20 max-w-full object-contain filter grayscale hover:grayscale-0 transition-smooth"
+                    className="max-h-20 max-w-full object-contain transition-smooth"
                   />
                 </div>
               </CarouselItem>
