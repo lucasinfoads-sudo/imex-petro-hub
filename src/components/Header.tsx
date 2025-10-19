@@ -3,47 +3,37 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { useNavigate } from "react-router-dom";
 import logoWhite from "@/assets/logo-white.png";
-
 const Header = () => {
   const navigate = useNavigate();
-  
-  const navItems = [
-    { label: "Quem Somos", href: "#sobre" },
-    { label: "Soluções", href: "#servicos" },
-    { label: "Diferenciais", href: "#diferenciais" },
-    { label: "Conteúdo", href: "#conteudo" },
-    { label: "Contato", href: "#contato" },
-  ];
-
-  return (
-    <header className="bg-primary sticky top-0 z-50 border-b border-primary-dark shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+  const navItems = [{
+    label: "Quem Somos",
+    href: "#sobre"
+  }, {
+    label: "Soluções",
+    href: "#servicos"
+  }, {
+    label: "Diferenciais",
+    href: "#diferenciais"
+  }, {
+    label: "Conteúdo",
+    href: "#conteudo"
+  }, {
+    label: "Contato",
+    href: "#contato"
+  }];
+  return <header className="bg-primary sticky top-0 z-50 border-b border-primary-dark shadow-sm">
+      <div className="container mx-auto px-4 bg-[#15a215]">
+        <div className="flex items-center justify-between h-16 md:h-20 bg-[#2ca32c]">
           <div className="flex items-center">
-            <img 
-              src={logoWhite} 
-              alt="Ganhe Tempo Logística" 
-              className="h-12 md:h-16 w-auto object-contain"
-            />
+            <img src={logoWhite} alt="Ganhe Tempo Logística" className="h-12 md:h-16 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-primary-foreground hover:text-accent transition-smooth text-sm font-medium"
-              >
+            {navItems.map(item => <a key={item.label} href={item.href} className="text-primary-foreground hover:text-accent transition-smooth text-sm font-medium">
                 {item.label}
-              </a>
-            ))}
-            <Button
-              onClick={() => navigate("/auth")}
-              variant="outline"
-              size="sm"
-              className="ml-4 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-            >
+              </a>)}
+            <Button onClick={() => navigate("/auth")} variant="outline" size="sm" className="ml-4 border-primary-foreground hover:bg-primary-foreground text-yellow-500">
               <LogIn className="mr-2 h-4 w-4" />
               Admin
             </Button>
@@ -58,21 +48,10 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent className="bg-primary">
               <nav className="flex flex-col space-y-4 mt-8">
-                {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="text-lg font-medium text-primary-foreground hover:text-accent transition-smooth"
-                  >
+                {navItems.map(item => <a key={item.label} href={item.href} className="text-lg font-medium text-primary-foreground hover:text-accent transition-smooth">
                     {item.label}
-                  </a>
-                ))}
-                <Button
-                  onClick={() => navigate("/auth")}
-                  variant="outline"
-                  size="sm"
-                  className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary mt-4"
-                >
+                  </a>)}
+                <Button onClick={() => navigate("/auth")} variant="outline" size="sm" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary mt-4">
                   <LogIn className="mr-2 h-4 w-4" />
                   Admin
                 </Button>
@@ -81,8 +60,6 @@ const Header = () => {
           </Sheet>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
