@@ -1,11 +1,60 @@
 import { Bike, DollarSign, Calendar, Shield, Smartphone } from "lucide-react";
+import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { Textarea } from "./ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Card, CardContent } from "./ui/card";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const WorkWithUsSection = () => {
+  const [formData, setFormData] = useState({
+    full_name: "",
+    phone: "",
+    email: "",
+    cnh_category: "",
+    has_motorcycle: "",
+    previous_experience: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const { error } = await supabase.from("delivery_applications").insert([
+        {
+          full_name: formData.full_name,
+          phone: formData.phone,
+          email: formData.email,
+          cnh_category: formData.cnh_category,
+          has_motorcycle: formData.has_motorcycle === "yes",
+          previous_experience: formData.previous_experience || null,
+        },
+      ]);
+
+      if (error) throw error;
+
+      toast.success("Candidatura enviada com sucesso!");
+      setFormData({
+        full_name: "",
+        phone: "",
+        email: "",
+        cnh_category: "",
+        has_motorcycle: "",
+        previous_experience: "",
+      });
+    } catch (error) {
+      console.error("Erro ao enviar candidatura:", error);
+      toast.error("Erro ao enviar candidatura. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const benefits = [
     {
       icon: DollarSign,
@@ -68,25 +117,57 @@ const WorkWithUsSection = () => {
             <Card className="shadow-elegant">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6">Cadastre-se agora</h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <div>
                     <Label htmlFor="name">Nome completo</Label>
-                    <Input id="name" placeholder="Seu nome" />
+                    <Input
+                      id="name"
+                      placeholder="Seu nome"
+                      value={formData.full_name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, full_name: e.target.value })
+                      }
+                      required
+                    />
                   </div>
                   
                   <div>
                     <Label htmlFor="phone">WhatsApp</Label>
-                    <Input id="phone" type="tel" placeholder="(47) 99999-9999" />
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="(47) 99999-9999"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                      required
+                    />
                   </div>
                   
                   <div>
                     <Label htmlFor="email">E-mail</Label>
-                    <Input id="email" type="email" placeholder="seu@email.com" />
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="seu@email.com"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      required
+                    />
                   </div>
                   
                   <div>
                     <Label htmlFor="cnh">CNH categoria</Label>
-                    <Select>
+                    <Select
+                      value={formData.cnh_category}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, cnh_category: value })
+                      }
+                      required
+                    >
                       <SelectTrigger id="cnh">
                         <SelectValue placeholder="Selecione" />
                       </SelectTrigger>
@@ -99,7 +180,13 @@ const WorkWithUsSection = () => {
                   
                   <div>
                     <Label htmlFor="motorcycle">Tem moto própria?</Label>
-                    <Select>
+                    <Select
+                      value={formData.has_motorcycle}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, has_motorcycle: value })
+                      }
+                      required
+                    >
                       <SelectTrigger id="motorcycle">
                         <SelectValue placeholder="Selecione" />
                       </SelectTrigger>
@@ -110,9 +197,26 @@ const WorkWithUsSection = () => {
                     </Select>
                   </div>
                   
-                  <Button className="w-full bg-primary hover:bg-primary-dark text-primary-foreground font-bold">
+                  <div>
+                    <Label htmlFor="experience">Experiência anterior (opcional)</Label>
+                    <Textarea
+                      id="experience"
+                      placeholder="Descreva sua experiência com entregas..."
+                      value={formData.previous_experience}
+                      onChange={(e) =>
+                        setFormData({ ...formData, previous_experience: e.target.value })
+                      }
+                      rows={3}
+                    />
+                  </div>
+                  
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary hover:bg-primary-dark text-primary-foreground font-bold"
+                    disabled={loading}
+                  >
                     <Bike className="mr-2 h-5 w-5" />
-                    ENVIAR CANDIDATURA
+                    {loading ? "ENVIANDO..." : "ENVIAR CANDIDATURA"}
                   </Button>
                 </form>
               </CardContent>

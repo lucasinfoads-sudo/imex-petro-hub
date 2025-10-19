@@ -139,7 +139,11 @@ All colors MUST be HSL.
   }
 
   .gradient-accent {
-    background: linear-gradient(135deg, hsl(142 80% 42%), hsl(48 100% 50%));
+    background: linear-gradient(135deg, hsl(142 76% 45%), hsl(48 100% 50%));
+  }
+  
+  .gradient-hero-yellow {
+    background: linear-gradient(135deg, hsl(142 76% 45%), hsl(54 91% 63%));
   }
 
   .gradient-soft {

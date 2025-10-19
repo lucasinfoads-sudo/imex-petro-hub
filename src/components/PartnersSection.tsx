@@ -37,7 +37,10 @@ const PartnersSection = () => {
           })}
         </div>
         <div className="text-center">
-          <Button className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold px-8 shadow-elegant hover:shadow-[0_10px_40px_hsl(var(--primary)/0.4)] transition-smooth">
+          <Button
+            onClick={() => window.open("https://api.whatsapp.com/send?phone=554797234255", "_blank")}
+            className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold px-8 shadow-elegant hover:shadow-[0_10px_40px_hsl(var(--primary)/0.4)] transition-smooth"
+          >
             Falar com um especialista
           </Button>
         </div>

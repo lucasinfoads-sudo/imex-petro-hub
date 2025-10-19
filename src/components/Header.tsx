@@ -1,9 +1,12 @@
-import { Menu } from "lucide-react";
+import { Menu, LogIn } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { useNavigate } from "react-router-dom";
 import logoGanheTempo from "@/assets/logo-ganhe-tempo.jpg";
 
 const Header = () => {
+  const navigate = useNavigate();
+  
   const navItems = [
     { label: "Quem Somos", href: "#sobre" },
     { label: "Soluções", href: "#servicos" },
@@ -35,6 +38,15 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
+            <Button
+              onClick={() => navigate("/auth")}
+              variant="outline"
+              size="sm"
+              className="ml-4"
+            >
+              <LogIn className="mr-2 h-4 w-4" />
+              Admin
+            </Button>
           </nav>
 
           {/* Mobile Navigation */}
