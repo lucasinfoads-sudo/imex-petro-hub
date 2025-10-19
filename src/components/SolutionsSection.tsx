@@ -35,7 +35,7 @@ const SolutionsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            🚀 O que você recebe ao ter a Ganhe Tempo{" "}
+            O que você recebe ao ter a Ganhe Tempo{" "}
             <span className="text-primary">como parceira.</span>
           </h2>
         </div>
@@ -62,7 +62,7 @@ const SolutionsSection = () => {
 
         <div className="text-center">
           <p className="text-xl md:text-2xl font-bold text-foreground">
-            💡 Entregar mais rápido é bom.{" "}
+            Entregar mais rápido é bom.{" "}
             <span className="text-primary">Entregar com inteligência é melhor.</span>
           </p>
         </div>

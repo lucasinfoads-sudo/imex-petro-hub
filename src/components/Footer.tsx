@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Linkedin, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   const services = [
@@ -16,13 +16,25 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { 
+      icon: Instagram, 
+      href: "https://www.instagram.com/ganhetempolog?igsh=N2R4YmJuNGNlaWo0", 
+      label: "Instagram" 
+    },
+    { 
+      icon: MessageCircle, 
+      href: "https://api.whatsapp.com/send?phone=554797234255", 
+      label: "WhatsApp" 
+    },
+    { 
+      icon: Linkedin, 
+      href: "#", 
+      label: "LinkedIn" 
+    },
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground py-12">
+    <footer className="gradient-primary text-primary-foreground py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
@@ -33,14 +45,14 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <a href="mailto:contato@ganhetempo.com.br" className="hover:text-accent transition-smooth text-sm">
-                  contato@ganhetempo.com.br
+                <a href="mailto:ganhetempologistica@gmail.com" className="hover:text-accent transition-smooth text-sm">
+                  ganhetempologistica@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <a href="tel:+5547999999999" className="hover:text-accent transition-smooth text-sm">
-                  (47) 99999-9999
+                <a href="tel:+5547972342555" className="hover:text-accent transition-smooth text-sm">
+                  +55 47 9723-4255
                 </a>
               </div>
               <div className="flex items-center gap-2">

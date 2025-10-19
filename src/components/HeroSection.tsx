@@ -12,7 +12,7 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-white">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              ⚡ E se o problema não for a entrega...
+              E se o problema não for a entrega...
               <br />
               <span className="text-accent">mas a forma como sua logística foi pensada?</span>
             </h1>

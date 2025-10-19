@@ -25,7 +25,7 @@ const BenefitsSection = () => {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          ⚙️ O que faz a Ganhe Tempo{" "}
+          O que faz a Ganhe Tempo{" "}
           <span className="text-primary">diferente</span>
         </h2>
 

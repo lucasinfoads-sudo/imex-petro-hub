@@ -12,6 +12,7 @@ import FleetSection from "@/components/FleetSection";
 import FAQSection from "@/components/FAQSection";
 import BlogSection from "@/components/BlogSection";
 import NewsletterSection from "@/components/NewsletterSection";
+import WorkWithUsSection from "@/components/WorkWithUsSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -32,6 +33,7 @@ const Index = () => {
         <FAQSection />
         <BlogSection />
         <NewsletterSection />
+        <WorkWithUsSection />
       </main>
       <Footer />
     </div>
