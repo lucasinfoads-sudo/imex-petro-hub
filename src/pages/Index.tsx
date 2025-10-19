@@ -14,10 +14,8 @@ import BlogSection from "@/components/BlogSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import WorkWithUsSection from "@/components/WorkWithUsSection";
 import Footer from "@/components/Footer";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <AnnouncementBar />
       <Header />
       <main>
@@ -35,9 +33,7 @@ const Index = () => {
         <NewsletterSection />
         <WorkWithUsSection />
       </main>
-      <Footer />
-    </div>
-  );
+      <Footer className="bg-lime-600" />
+    </div>;
 };
-
 export default Index;
