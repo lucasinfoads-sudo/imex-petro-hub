@@ -1,4 +1,5 @@
-import { Instagram, Linkedin, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import logoBanner from "@/assets/logo-banner.png";
 
 const Footer = () => {
   const services = [
@@ -23,13 +24,8 @@ const Footer = () => {
     },
     { 
       icon: MessageCircle, 
-      href: "https://api.whatsapp.com/send?phone=554797234255", 
+      href: "https://wa.me/554797234255", 
       label: "WhatsApp" 
-    },
-    { 
-      icon: Linkedin, 
-      href: "#", 
-      label: "LinkedIn" 
     },
   ];
 
@@ -38,7 +34,11 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">GANHE TEMPO</h3>
+            <img 
+              src={logoBanner} 
+              alt="Ganhe Tempo Logística" 
+              className="h-16 w-auto object-contain mb-4"
+            />
             <p className="mb-4 text-primary-foreground/80">
               Logística inteligente para empresas que valorizam cada entrega.
             </p>
@@ -51,7 +51,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <a href="tel:+5547972342555" className="hover:text-accent transition-smooth text-sm">
+                <a href="tel:+554797234255" className="hover:text-accent transition-smooth text-sm">
                   +55 47 9723-4255
                 </a>
               </div>
@@ -103,6 +103,8 @@ const Footer = () => {
                   <a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground p-3 rounded-full transition-smooth"
                   >

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import logoWhite from "@/assets/logo-white.png";
+import logoGanheTempo from "@/assets/logo-ganhe-tempo.jpg";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -57,7 +57,7 @@ const Auth = () => {
       <Card className="w-full max-w-md shadow-elegant">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <img src={logoWhite} alt="Ganhe Tempo" className="h-16" />
+            <img src={logoGanheTempo} alt="Ganhe Tempo" className="h-16" />
           </div>
           <CardTitle className="text-2xl">Acesso Administrativo</CardTitle>
         </CardHeader>

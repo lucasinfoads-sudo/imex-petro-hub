@@ -2,7 +2,7 @@ import { Menu, LogIn } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { useNavigate } from "react-router-dom";
-import logoGanheTempo from "@/assets/logo-ganhe-tempo.jpg";
+import logoWhite from "@/assets/logo-white.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,12 +16,12 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-background sticky top-0 z-50 border-b border-border shadow-sm">
+    <header className="bg-primary sticky top-0 z-50 border-b border-primary-dark shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
             <img 
-              src={logoGanheTempo} 
+              src={logoWhite} 
               alt="Ganhe Tempo Logística" 
               className="h-12 md:h-16 w-auto object-contain"
             />
@@ -33,7 +33,7 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-smooth text-sm font-medium"
+                className="text-primary-foreground hover:text-accent transition-smooth text-sm font-medium"
               >
                 {item.label}
               </a>
@@ -42,7 +42,7 @@ const Header = () => {
               onClick={() => navigate("/auth")}
               variant="outline"
               size="sm"
-              className="ml-4"
+              className="ml-4 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
               <LogIn className="mr-2 h-4 w-4" />
               Admin
@@ -52,21 +52,30 @@ const Header = () => {
           {/* Mobile Navigation */}
           <Sheet>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" className="text-primary">
+              <Button variant="ghost" size="icon" className="text-primary-foreground">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className="bg-primary">
               <nav className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="text-lg font-medium hover:text-primary transition-smooth"
+                    className="text-lg font-medium text-primary-foreground hover:text-accent transition-smooth"
                   >
                     {item.label}
                   </a>
                 ))}
+                <Button
+                  onClick={() => navigate("/auth")}
+                  variant="outline"
+                  size="sm"
+                  className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary mt-4"
+                >
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Admin
+                </Button>
               </nav>
             </SheetContent>
           </Sheet>

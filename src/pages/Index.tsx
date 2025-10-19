@@ -33,7 +33,7 @@ const Index = () => {
         <NewsletterSection />
         <WorkWithUsSection />
       </main>
-      <Footer className="bg-lime-600" />
+      <Footer />
     </div>;
 };
 export default Index;
