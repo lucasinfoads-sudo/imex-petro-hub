@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import logoGanheTempo from "@/assets/logo-ganhe-tempo.jpg";
+import { adminLoginSchema, sanitizeInput } from "@/lib/validations";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -19,12 +20,23 @@ const Auth = () => {
     setLoading(true);
 
     try {
+      // Sanitize and validate inputs
+      const sanitizedData = {
+        email: sanitizeInput(email.toLowerCase()),
+        password: password, // Don't sanitize password (could remove valid special chars)
+      };
+
+      const validatedData = adminLoginSchema.parse(sanitizedData);
+
       const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+        email: validatedData.email,
+        password: validatedData.password,
       });
 
-      if (authError) throw authError;
+      if (authError) {
+        // Don't expose detailed error messages to prevent enumeration attacks
+        throw new Error("E-mail ou senha incorretos");
+      }
 
       if (authData.user) {
         // Verificar se usuário é admin
@@ -35,7 +47,10 @@ const Auth = () => {
           .eq("role", "admin")
           .maybeSingle();
 
-        if (roleError) throw roleError;
+        if (roleError) {
+          await supabase.auth.signOut();
+          throw new Error("Erro ao verificar permissões");
+        }
 
         if (roleData) {
           toast.success("Login realizado com sucesso!");
@@ -46,7 +61,12 @@ const Auth = () => {
         }
       }
     } catch (error: any) {
-      toast.error(error.message || "Erro ao fazer login");
+      if (error.errors && Array.isArray(error.errors)) {
+        // Zod validation errors
+        toast.error("Dados inválidos");
+      } else {
+        toast.error(error.message || "Erro ao fazer login");
+      }
     } finally {
       setLoading(false);
     }

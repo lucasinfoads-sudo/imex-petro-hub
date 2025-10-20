@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Card, CardContent } from "./ui/card";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { deliveryApplicationSchema, sanitizeInput } from "@/lib/validations";
 
 const WorkWithUsSection = () => {
   const [formData, setFormData] = useState({
@@ -25,14 +26,27 @@ const WorkWithUsSection = () => {
     setLoading(true);
 
     try {
+      // Sanitize inputs
+      const sanitizedData = {
+        full_name: sanitizeInput(formData.full_name),
+        phone: sanitizeInput(formData.phone),
+        email: sanitizeInput(formData.email.toLowerCase()),
+        cnh_category: sanitizeInput(formData.cnh_category.toLowerCase()),
+        has_motorcycle: formData.has_motorcycle,
+        previous_experience: formData.previous_experience ? sanitizeInput(formData.previous_experience) : "",
+      };
+
+      // Validate with Zod
+      const validatedData = deliveryApplicationSchema.parse(sanitizedData);
+
       const { error } = await supabase.from("delivery_applications").insert([
         {
-          full_name: formData.full_name,
-          phone: formData.phone,
-          email: formData.email,
-          cnh_category: formData.cnh_category,
-          has_motorcycle: formData.has_motorcycle === "yes",
-          previous_experience: formData.previous_experience || null,
+          full_name: validatedData.full_name,
+          phone: validatedData.phone,
+          email: validatedData.email,
+          cnh_category: validatedData.cnh_category,
+          has_motorcycle: validatedData.has_motorcycle === "yes",
+          previous_experience: validatedData.previous_experience || null,
         },
       ]);
 
@@ -47,9 +61,14 @@ const WorkWithUsSection = () => {
         has_motorcycle: "",
         previous_experience: "",
       });
-    } catch (error) {
-      console.error("Erro ao enviar candidatura:", error);
-      toast.error("Erro ao enviar candidatura. Tente novamente.");
+    } catch (error: any) {
+      if (error.errors && Array.isArray(error.errors)) {
+        // Zod validation errors
+        toast.error(error.errors[0]?.message || "Dados inválidos");
+      } else {
+        console.error("Erro ao enviar candidatura:", error);
+        toast.error("Erro ao enviar candidatura. Tente novamente.");
+      }
     } finally {
       setLoading(false);
     }

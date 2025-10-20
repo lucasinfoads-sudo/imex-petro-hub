@@ -23,9 +23,9 @@ const Header = () => {
   }];
   return <header className="bg-primary sticky top-0 z-50 border-b border-primary-dark shadow-sm">
       <div className="container mx-auto px-4 bg-[#15a215]">
-        <div className="flex items-center justify-between h-16 md:h-20 bg-[#2ca32c]">
+        <div className="flex items-center justify-between h-24 md:h-28 bg-[#2ca32c]">
           <div className="flex items-center">
-            <img src={logoWhite} alt="Ganhe Tempo Logística" className="h-12 md:h-16 w-auto object-contain" />
+            <img src={logoWhite} alt="Ganhe Tempo Logística" className="h-20 md:h-24 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}

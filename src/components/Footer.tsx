@@ -1,7 +1,8 @@
 import { Instagram, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import logoBanner from "@/assets/logo-banner.png";
+import { cn } from "@/lib/utils";
 
-const Footer = () => {
+const Footer = ({ className }: { className?: string }) => {
   const services = [
     { name: "Coleta e Entrega Expressa", href: "#servicos" },
     { name: "Transporte de Medicamentos", href: "#servicos" },
@@ -30,7 +31,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="gradient-primary text-primary-foreground py-12">
+    <footer className={cn("gradient-primary text-primary-foreground py-12", className)}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>

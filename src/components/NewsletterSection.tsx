@@ -11,6 +11,7 @@ import {
 } from "./ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { clientLeadSchema, sanitizeInput } from "@/lib/validations";
 
 const NewsletterSection = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,23 @@ const NewsletterSection = () => {
     setLoading(true);
 
     try {
-      const { error } = await supabase.from("client_leads").insert([formData]);
+      // Sanitize inputs
+      const sanitizedData = {
+        company_name: sanitizeInput(formData.company_name),
+        email: sanitizeInput(formData.email.toLowerCase()),
+        phone: sanitizeInput(formData.phone),
+        business_type: sanitizeInput(formData.business_type),
+      };
+
+      // Validate with Zod
+      const validatedData = clientLeadSchema.parse(sanitizedData);
+
+      const { error } = await supabase.from("client_leads").insert({
+        company_name: validatedData.company_name,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        business_type: validatedData.business_type,
+      });
 
       if (error) throw error;
 
@@ -37,9 +54,14 @@ const NewsletterSection = () => {
         phone: "",
         business_type: "",
       });
-    } catch (error) {
-      console.error("Erro ao enviar solicitação:", error);
-      toast.error("Erro ao enviar solicitação. Tente novamente.");
+    } catch (error: any) {
+      if (error.errors && Array.isArray(error.errors)) {
+        // Zod validation errors
+        toast.error(error.errors[0]?.message || "Dados inválidos");
+      } else {
+        console.error("Erro ao enviar solicitação:", error);
+        toast.error("Erro ao enviar solicitação. Tente novamente.");
+      }
     } finally {
       setLoading(false);
     }
