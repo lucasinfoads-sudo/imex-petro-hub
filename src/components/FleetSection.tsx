@@ -13,7 +13,6 @@ const FleetSection = () => {
     { src: deliveryTeamImage, alt: "Equipe de entrega Ganhe Tempo uniformizada" },
     { src: sedeImage, alt: "Sede da Ganhe Tempo Logística" },
     { src: teamImage, alt: "Time Ganhe Tempo" },
-    { src: mapaCobertura, alt: "Mapa de cobertura das entregas" },
   ];
 
   return (
@@ -45,6 +44,30 @@ const FleetSection = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Mapa de Cobertura - Fileira separada */}
+          <div className="mt-12 max-w-6xl mx-auto">
+            <h3 className="text-2xl font-bold text-center mb-6">
+              Área de <span className="text-primary">Cobertura</span>
+            </h3>
+            <div
+              className="group relative overflow-hidden rounded-lg shadow-card hover:shadow-elegant transition-smooth cursor-pointer"
+              onClick={() => setSelectedImage(mapaCobertura)}
+            >
+              <div className="w-full">
+                <img
+                  src={mapaCobertura}
+                  alt="Mapa de cobertura das entregas"
+                  className="w-full h-auto object-contain transform group-hover:scale-105 transition-smooth"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-smooth flex items-end">
+                <p className="text-white font-semibold p-4 text-sm md:text-base">
+                  Clique para ampliar o mapa de cobertura
+                </p>
+              </div>
+            </div>
           </div>
           
           <div className="mt-12 text-center">
