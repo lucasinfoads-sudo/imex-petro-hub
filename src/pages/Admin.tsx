@@ -12,8 +12,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { LogOut, Users, Bike } from "lucide-react";
+import { LogOut, Users, Bike, FileText, Plus, Trash2 } from "lucide-react";
+import BlogPostForm from "@/components/BlogPostForm";
 
 interface ClientLead {
   id: string;
@@ -35,10 +37,21 @@ interface DeliveryApplication {
   created_at: string;
 }
 
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  published_at: string | null;
+  created_at: string;
+}
+
 const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [clientLeads, setClientLeads] = useState<ClientLead[]>([]);
   const [deliveryApps, setDeliveryApps] = useState<DeliveryApplication[]>([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [showBlogForm, setShowBlogForm] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -80,17 +93,32 @@ const Admin = () => {
   const loadData = async () => {
     setLoading(true);
     try {
-      const [clientsRes, deliveryRes] = await Promise.all([
+      const [clientsRes, deliveryRes, blogRes] = await Promise.all([
         supabase.from("client_leads").select("*").order("created_at", { ascending: false }),
         supabase.from("delivery_applications").select("*").order("created_at", { ascending: false }),
+        supabase.from("blog_posts").select("*").order("created_at", { ascending: false }),
       ]);
 
       if (clientsRes.data) setClientLeads(clientsRes.data);
       if (deliveryRes.data) setDeliveryApps(deliveryRes.data);
+      if (blogRes.data) setBlogPosts(blogRes.data);
     } catch (error) {
       toast.error("Erro ao carregar dados");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDeletePost = async (postId: string) => {
+    if (!confirm("Tem certeza que deseja excluir este artigo?")) return;
+
+    try {
+      const { error } = await supabase.from("blog_posts").delete().eq("id", postId);
+      if (error) throw error;
+      toast.success("Artigo excluído com sucesso");
+      loadData();
+    } catch (error) {
+      toast.error("Erro ao excluir artigo");
     }
   };
 
@@ -136,7 +164,7 @@ const Admin = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="clients" className="space-y-6">
-          <TabsList className="grid w-full max-w-md grid-cols-2">
+          <TabsList className="grid w-full max-w-2xl grid-cols-3">
             <TabsTrigger value="clients">
               <Users className="mr-2 h-4 w-4" />
               Clientes ({clientLeads.length})
@@ -144,6 +172,10 @@ const Admin = () => {
             <TabsTrigger value="delivery">
               <Bike className="mr-2 h-4 w-4" />
               Entregadores ({deliveryApps.length})
+            </TabsTrigger>
+            <TabsTrigger value="blog">
+              <FileText className="mr-2 h-4 w-4" />
+              Artigos ({blogPosts.length})
             </TabsTrigger>
           </TabsList>
 
@@ -232,8 +264,87 @@ const Admin = () => {
               </CardContent>
             </Card>
           </TabsContent>
+
+          <TabsContent value="blog">
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <CardTitle>Artigos do Blog</CardTitle>
+                <Button onClick={() => setShowBlogForm(true)}>
+                  <Plus className="mr-2 h-4 w-4" />
+                  Novo Artigo
+                </Button>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Título</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Data de Publicação</TableHead>
+                        <TableHead>Ações</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {blogPosts.map((post) => (
+                        <TableRow key={post.id}>
+                          <TableCell className="font-medium">{post.title}</TableCell>
+                          <TableCell>
+                            {post.published_at ? (
+                              <span className="text-green-600">Publicado</span>
+                            ) : (
+                              <span className="text-yellow-600">Rascunho</span>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {post.published_at
+                              ? formatDate(post.published_at)
+                              : "-"}
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleDeletePost(post.id)}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                      {blogPosts.length === 0 && (
+                        <TableRow>
+                          <TableCell
+                            colSpan={4}
+                            className="text-center text-muted-foreground"
+                          >
+                            Nenhum artigo criado ainda
+                          </TableCell>
+                        </TableRow>
+                      )}
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
         </Tabs>
       </main>
+
+      <Dialog open={showBlogForm} onOpenChange={setShowBlogForm}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Criar Novo Artigo</DialogTitle>
+          </DialogHeader>
+          <BlogPostForm
+            onSuccess={() => {
+              setShowBlogForm(false);
+              loadData();
+            }}
+            onCancel={() => setShowBlogForm(false)}
+          />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

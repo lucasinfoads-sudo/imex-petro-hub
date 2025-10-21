@@ -22,9 +22,9 @@ const HeroSection = () => {
             <Button
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8 py-6 text-lg shadow-elegant"
-              onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              QUERO SER UM PARCEIRO
+              QUERO SER PARCEIRO
             </Button>
           </div>
 

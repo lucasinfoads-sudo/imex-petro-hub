@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { ArrowRight, Calendar } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 
 interface BlogPost {
@@ -14,7 +16,7 @@ interface BlogPost {
   published_at: string;
 }
 
-const BlogSection = () => {
+const BlogList = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -29,8 +31,7 @@ const BlogSection = () => {
         .from("blog_posts")
         .select("*")
         .not("published_at", "is", null)
-        .order("published_at", { ascending: false })
-        .limit(3);
+        .order("published_at", { ascending: false });
 
       if (error) throw error;
       setPosts(data || []);
@@ -50,30 +51,32 @@ const BlogSection = () => {
   };
 
   return (
-    <section id="conteudo" className="py-16 gradient-soft">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Insights em <span className="text-primary">Logística</span>
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Conhecimento que move seu negócio para frente
-          </p>
-        </div>
-
-        {loading ? (
-          <div className="text-center py-12">
-            <p className="text-lg text-muted-foreground">Carregando artigos...</p>
-          </div>
-        ) : posts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-lg text-muted-foreground">
-              Nenhum artigo disponível no momento.
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      
+      <main className="flex-1 gradient-light py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Todos os <span className="text-primary">Artigos</span>
+            </h1>
+            <p className="text-xl text-muted-foreground">
+              Conhecimento que move seu negócio para frente
             </p>
           </div>
-        ) : (
-          <>
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-xl">Carregando artigos...</p>
+            </div>
+          ) : posts.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-xl text-muted-foreground">
+                Nenhum artigo publicado ainda.
+              </p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {posts.map((post) => {
                 const IconComponent = (LucideIcons as any)[post.icon_name] || LucideIcons.Package;
                 return (
@@ -85,10 +88,11 @@ const BlogSection = () => {
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                       <IconComponent className="w-6 h-6 text-primary" />
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      {formatDate(post.published_at)}
-                    </p>
-                    <h3 className="text-xl font-bold mb-3">{post.title}</h3>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                      <Calendar className="w-4 h-4" />
+                      <time>{formatDate(post.published_at)}</time>
+                    </div>
+                    <h2 className="text-xl font-bold mb-3">{post.title}</h2>
                     <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                     <Button
                       variant="ghost"
@@ -100,21 +104,13 @@ const BlogSection = () => {
                 );
               })}
             </div>
+          )}
+        </div>
+      </main>
 
-            <div className="text-center">
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                onClick={() => navigate("/blog")}
-              >
-                Ver todos os artigos
-              </Button>
-            </div>
-          </>
-        )}
-      </div>
-    </section>
+      <Footer />
+    </div>
   );
 };
 
-export default BlogSection;
+export default BlogList;

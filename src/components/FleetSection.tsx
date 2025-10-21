@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "./ui/dialog";
-import { Linkedin, Facebook } from "lucide-react";
 import sedeImage from "@/assets/sede-ganhe-tempo.jpg";
 import teamImage from "@/assets/team-ganhe-tempo.jpg";
 import deliveryTeamImage from "@/assets/delivery-team.jpg";
@@ -67,30 +66,6 @@ const FleetSection = () => {
                   Clique para ampliar o mapa de cobertura
                 </p>
               </div>
-            </div>
-          </div>
-          
-          <div className="mt-12 text-center">
-            <p className="text-lg font-semibold mb-4">Siga-nos nas redes sociais</p>
-            <div className="flex items-center justify-center gap-6">
-              <a
-                href="https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary hover:text-primary-dark transition-smooth"
-              >
-                <Linkedin className="w-6 h-6" />
-                <span className="font-medium">LinkedIn</span>
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61564434553593"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary hover:text-primary-dark transition-smooth"
-              >
-                <Facebook className="w-6 h-6" />
-                <span className="font-medium">Facebook</span>
-              </a>
             </div>
           </div>
         </div>

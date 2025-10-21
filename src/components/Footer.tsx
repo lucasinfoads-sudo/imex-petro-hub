@@ -1,5 +1,5 @@
-import { Instagram, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
-import logoBanner from "@/assets/logo-banner.png";
+import { Instagram, MessageCircle, Mail, Phone, MapPin, Linkedin, Facebook } from "lucide-react";
+import logoTransparent from "@/assets/logo-transparent.png";
 import { cn } from "@/lib/utils";
 
 const Footer = ({ className }: { className?: string }) => {
@@ -28,6 +28,16 @@ const Footer = ({ className }: { className?: string }) => {
       href: "https://wa.me/554797234255", 
       label: "WhatsApp" 
     },
+    { 
+      icon: Linkedin, 
+      href: "https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit", 
+      label: "LinkedIn" 
+    },
+    { 
+      icon: Facebook, 
+      href: "https://www.facebook.com/profile.php?id=61564434553593", 
+      label: "Facebook" 
+    },
   ];
 
   return (
@@ -36,7 +46,7 @@ const Footer = ({ className }: { className?: string }) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <img 
-              src={logoBanner} 
+              src={logoTransparent} 
               alt="Ganhe Tempo Logística" 
               className="h-16 w-auto object-contain mb-4"
             />
