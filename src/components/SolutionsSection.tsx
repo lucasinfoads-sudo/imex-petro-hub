@@ -1,4 +1,4 @@
-import { Truck, Pill, Headphones, BarChart3, Route } from "lucide-react";
+import { Truck, Pill, Headphones, BarChart3, Route, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 
 const SolutionsSection = () => {
@@ -28,6 +28,11 @@ const SolutionsSection = () => {
       title: "Planejamento logístico personalizado",
       description: "Crescimento previsível e organizado para seu negócio.",
     },
+    {
+      icon: TrendingUp,
+      title: "Crescimento",
+      description: "Acompanhando o crescimento da sua empresa, número de entregadores e tecnologia.",
+    },
   ];
 
   return (
@@ -36,7 +41,7 @@ const SolutionsSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             O que você recebe ao ter a Ganhe Tempo{" "}
-            <span className="text-primary">como parceira.</span>
+            <span className="text-primary">como parceiro.</span>
           </h2>
         </div>
 

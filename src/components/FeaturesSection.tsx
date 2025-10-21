@@ -56,12 +56,6 @@ const FeaturesSection = () => {
             );
           })}
         </div>
-
-        <div className="text-center">
-          <p className="text-xl md:text-2xl font-bold text-primary italic">
-            "A logística certa não é a mais rápida. É a que nunca falha."
-          </p>
-        </div>
       </div>
     </section>
   );

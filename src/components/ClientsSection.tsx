@@ -8,7 +8,6 @@ import clienteVom from "@/assets/clients/cliente-vom.jpg";
 import clienteRft from "@/assets/clients/cliente-rft.jpg";
 import clienteMpa from "@/assets/clients/cliente-mpa.jpg";
 import clienteMaster from "@/assets/clients/cliente-master.jpg";
-import clienteFarma from "@/assets/clients/cliente-farma.png";
 import clienteSaoRafael from "@/assets/clients/cliente-sao-rafael.png";
 import clienteBrasilPopular from "@/assets/clients/cliente-brasil-popular.png";
 
@@ -22,7 +21,6 @@ const ClientsSection = () => {
     { name: "RFT Farmácias", logo: clienteRft },
     { name: "MPÁ Gestão", logo: clienteMpa },
     { name: "Master Farma", logo: clienteMaster },
-    { name: "Farma e Farma", logo: clienteFarma },
     { name: "São Rafael Farmácias", logo: clienteSaoRafael },
     { name: "Brasil Popular", logo: clienteBrasilPopular },
   ];

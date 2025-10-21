@@ -21,15 +21,15 @@ const Header = () => {
     label: "Contato",
     href: "#contato"
   }];
-  return <header className="bg-primary sticky top-0 z-50 border-b border-primary-dark shadow-sm">
-      <div className="container mx-auto px-4 bg-[#15a215]">
-        <div className="flex items-center justify-between h-24 md:h-28 bg-[#2ca32c]">
-          <div className="flex items-center">
-            <img src={logoWhite} alt="Ganhe Tempo Logística" className="h-20 md:h-24 w-auto object-contain" />
+  return <header className="bg-logo-green sticky top-0 z-50 border-b border-primary-dark shadow-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-24 md:h-28">
+          <div className="flex items-center order-2 lg:order-1">
+            <img src={logoWhite} alt="Ganhe Tempo Logística" className="h-24 md:h-32 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8 order-1 lg:order-2">
             {navItems.map(item => <a key={item.label} href={item.href} className="text-primary-foreground hover:text-accent transition-smooth text-sm font-medium">
                 {item.label}
               </a>)}

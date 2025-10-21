@@ -26,7 +26,7 @@ const StatItem = ({ prefix, number, unit, label }: StatItemProps) => {
 
 const StatsSection = () => {
   const stats = [
-    { prefix: "+", number: 30, label: "anos de experiência" },
+    { prefix: "+", number: 3, label: "anos de experiência" },
     { prefix: "+", number: 30, unit: "MIL", label: "entregas realizadas" },
     { prefix: "+", number: 3, label: "cidades atendidas em SC" },
     { prefix: "+", number: 40, label: "empresas parceiras" },

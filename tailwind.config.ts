@@ -25,6 +25,7 @@ export default {
           dark: "hsl(var(--primary-dark))",
           light: "hsl(var(--primary-light))",
         },
+        "logo-green": "hsl(var(--logo-green))",
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

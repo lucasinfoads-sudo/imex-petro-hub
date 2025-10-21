@@ -19,6 +19,10 @@ const BenefitsSection = () => {
       title: "Expansão planejada",
       description: "Crescimento consistente com o mesmo padrão em cada cidade.",
     },
+    {
+      title: "Rastreamento e Treinamento de Equipe",
+      description: "Tecnologia de rastreamento em tempo real e equipe constantemente capacitada para excelência no atendimento.",
+    },
   ];
 
   return (
@@ -29,7 +33,7 @@ const BenefitsSection = () => {
           <span className="text-primary">diferente</span>
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
           {benefits.map((benefit, index) => (
             <div key={index} className="flex items-start gap-4">
               <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
