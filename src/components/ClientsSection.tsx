@@ -2,7 +2,6 @@ import { Button } from "./ui/button";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useCountUp } from "@/hooks/useCountUp";
-import clienteFct from "@/assets/clients/cliente-fct.png";
 import clienteMagnitude from "@/assets/clients/cliente-magnitude.jpg";
 import clienteVom from "@/assets/clients/cliente-vom.jpg";
 import clienteRft from "@/assets/clients/cliente-rft.jpg";
@@ -15,7 +14,6 @@ const ClientsSection = () => {
   const { count, ref } = useCountUp(40);
   
   const clients = [
-    { name: "FCT Farmácia", logo: clienteFct },
     { name: "Magnitude Cosméticos", logo: clienteMagnitude },
     { name: "VOM Store", logo: clienteVom },
     { name: "RFT Farmácias", logo: clienteRft },
