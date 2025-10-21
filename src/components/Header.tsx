@@ -2,7 +2,7 @@ import { Menu, LogIn } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { useNavigate } from "react-router-dom";
-import logoWhite from "@/assets/logo-white.png";
+import logoTransparent from "@/assets/logo-transparent.png";
 const Header = () => {
   const navigate = useNavigate();
   const navItems = [{
@@ -25,7 +25,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-24 md:h-28">
           <div className="flex items-center order-2 lg:order-1">
-            <img src={logoWhite} alt="Ganhe Tempo Logística" className="h-24 md:h-32 w-auto object-contain" />
+            <img src={logoTransparent} alt="Ganhe Tempo Logística" className="h-20 md:h-24 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
