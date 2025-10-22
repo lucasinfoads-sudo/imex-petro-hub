@@ -21,7 +21,7 @@ const Header = () => {
     label: "Contato",
     href: "#contato"
   }];
-  return <header className="bg-logo-green sticky top-0 z-50 border-b border-primary-dark shadow-sm">
+  return <header className="bg-logo-green sticky top-12 z-50 border-b border-primary-dark shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-24 md:h-28">
           <div className="flex items-center order-2 lg:order-1">
