@@ -25,7 +25,7 @@ const Footer = ({ className }: { className?: string }) => {
     },
     { 
       icon: MessageCircle, 
-      href: "https://wa.me/554797234255", 
+      href: "https://api.whatsapp.com/send?phone=5547997234255&text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Ganhe%20Tempo%20Log%C3%ADstica%20💚", 
       label: "WhatsApp" 
     },
     { 
@@ -48,7 +48,7 @@ const Footer = ({ className }: { className?: string }) => {
             <img 
               src={logoTransparent} 
               alt="Ganhe Tempo Logística" 
-              className="h-24 w-auto object-contain mb-4"
+              className="h-32 w-auto object-contain mb-4"
             />
             <p className="mb-4 text-primary-foreground/80">
               Logística inteligente para empresas que valorizam cada entrega.
@@ -62,8 +62,8 @@ const Footer = ({ className }: { className?: string }) => {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <a href="tel:+554797234255" className="hover:text-accent transition-smooth text-sm">
-                  +55 47 9723-4255
+                <a href="https://api.whatsapp.com/send?phone=5547997234255&text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Ganhe%20Tempo%20Log%C3%ADstica%20💚" className="hover:text-accent transition-smooth text-sm">
+                  +55 47 9972-34255
                 </a>
               </div>
               <div className="flex items-center gap-2">
