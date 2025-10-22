@@ -15,7 +15,8 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return <div className="min-h-screen">
       <AnnouncementBar />
-      <Header />
+      <div className="pt-12">
+        <Header />
       <main>
         <HeroSection />
         <StatsSection />
@@ -30,6 +31,7 @@ const Index = () => {
         <FAQSection />
       </main>
       <Footer className="bg-[#1e9116]" />
+      </div>
     </div>;
 };
 export default Index;
