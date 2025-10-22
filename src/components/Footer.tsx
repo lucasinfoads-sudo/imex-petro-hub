@@ -30,7 +30,7 @@ const Footer = ({ className }: { className?: string }) => {
     },
     { 
       icon: Linkedin, 
-      href: "https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit", 
+      href: "https://www.linkedin.com/in/ganhetempolog%C3%ADstica/", 
       label: "LinkedIn" 
     },
     { 
@@ -48,7 +48,7 @@ const Footer = ({ className }: { className?: string }) => {
             <img 
               src={logoTransparent} 
               alt="Ganhe Tempo Logística" 
-              className="h-16 w-auto object-contain mb-4"
+              className="h-24 w-auto object-contain mb-4"
             />
             <p className="mb-4 text-primary-foreground/80">
               Logística inteligente para empresas que valorizam cada entrega.

@@ -1,4 +1,4 @@
-import { Settings, Radio, Users, Headphones, TrendingUp } from "lucide-react";
+import { Settings, Radio, Users, Headphones, TrendingUp, MapPin } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 
 const FeaturesSection = () => {
@@ -27,6 +27,11 @@ const FeaturesSection = () => {
       icon: TrendingUp,
       title: "Expansão planejada",
       description: "Crescimento consistente, com o mesmo padrão em cada cidade.",
+    },
+    {
+      icon: MapPin,
+      title: "Rastreamento em tempo real",
+      description: "Acompanhe suas entregas com tecnologia de ponta.",
     },
   ];
 

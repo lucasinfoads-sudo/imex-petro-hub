@@ -9,6 +9,7 @@ import clienteMpa from "@/assets/clients/cliente-mpa.jpg";
 import clienteMaster from "@/assets/clients/cliente-master.jpg";
 import clienteSaoRafael from "@/assets/clients/cliente-sao-rafael.png";
 import clienteBrasilPopular from "@/assets/clients/cliente-brasil-popular.png";
+import clienteMariaNadalini from "@/assets/clients/cliente-maria-nadalini.jpg";
 
 const ClientsSection = () => {
   const { count, ref } = useCountUp(40);
@@ -21,6 +22,7 @@ const ClientsSection = () => {
     { name: "Master Farma", logo: clienteMaster },
     { name: "São Rafael Farmácias", logo: clienteSaoRafael },
     { name: "Brasil Popular", logo: clienteBrasilPopular },
+    { name: "Maria Nadalini", logo: clienteMariaNadalini },
   ];
 
   return (
@@ -33,7 +35,10 @@ const ClientsSection = () => {
           <p className="text-xl text-muted-foreground mb-8">
             Empresas que confiam na Ganhe Tempo para suas entregas estratégicas
           </p>
-          <Button className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold px-8 animate-pulse hover:animate-none">
+          <Button 
+            onClick={() => document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold px-8 animate-pulse hover:animate-none"
+          >
             QUERO SER PARCEIRO
           </Button>
         </div>
@@ -62,11 +67,11 @@ const ClientsSection = () => {
                   key={index}
                   className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5"
                 >
-                  <div className="flex items-center justify-center p-6 bg-card rounded-lg shadow-card hover:shadow-elegant transition-smooth hover-scale h-32">
+                  <div className="flex items-center justify-center p-6 bg-card rounded-lg shadow-card hover:shadow-elegant transition-smooth hover-scale h-32 animate-fade-in">
                     <img
                       src={client.logo}
                       alt={`Logo ${client.name}`}
-                      className="max-h-20 max-w-full object-contain transition-smooth"
+                      className="max-h-20 max-w-full object-contain transition-smooth hover:scale-110"
                     />
                   </div>
                 </CarouselItem>

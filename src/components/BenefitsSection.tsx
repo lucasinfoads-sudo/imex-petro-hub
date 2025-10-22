@@ -1,5 +1,4 @@
 import { CheckCircle2 } from "lucide-react";
-import { Button } from "./ui/button";
 
 const BenefitsSection = () => {
   const benefits = [
@@ -45,11 +44,6 @@ const BenefitsSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
-          <Button className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold px-8">
-            Falar com um especialista
-          </Button>
-        </div>
       </div>
     </section>
   );
