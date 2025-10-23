@@ -44,7 +44,7 @@ const Footer = ({ className }: { className?: string }) => {
     <footer className={cn("gradient-primary text-primary-foreground py-12", className)}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 items-start">
-          <div className="-ml-8 lg:-ml-12">
+          <div className="-ml-8 lg:-ml-20">
             <img 
               src={logoTransparent} 
               alt="Ganhe Tempo Logística" 
