@@ -23,9 +23,9 @@ const Header = () => {
   }];
   return <header className="bg-logo-green sticky top-12 z-50 border-b border-primary-dark shadow-sm">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-28 md:h-32">
-          <div className="flex items-center order-2 lg:order-1">
-            <img src={logoTransparent} alt="Ganhe Tempo Logística" className="h-32 md:h-40 w-auto object-contain" />
+        <div className="flex items-center justify-between h-32 md:h-36">
+          <div className="flex items-center order-2 lg:order-1 -ml-4">
+            <img src={logoTransparent} alt="Ganhe Tempo Logística" className="h-40 md:h-48 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}

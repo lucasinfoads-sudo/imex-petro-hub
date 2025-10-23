@@ -43,17 +43,17 @@ const Footer = ({ className }: { className?: string }) => {
   return (
     <footer className={cn("gradient-primary text-primary-foreground py-12", className)}>
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 items-start">
+          <div className="-ml-4">
             <img 
               src={logoTransparent} 
               alt="Ganhe Tempo Logística" 
-              className="h-40 md:h-48 w-auto object-contain mb-4 -ml-2"
+              className="h-48 md:h-56 w-auto object-contain mb-4"
             />
-            <p className="mb-4 text-primary-foreground/80">
+            <p className="mb-4 text-primary-foreground/80 ml-4">
               Logística inteligente para empresas que valorizam cada entrega.
             </p>
-            <div className="space-y-2">
+            <div className="space-y-2 ml-4">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 <a href="mailto:ganhetempologistica@gmail.com" className="hover:text-accent transition-smooth text-sm">
