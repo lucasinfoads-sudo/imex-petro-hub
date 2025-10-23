@@ -48,7 +48,7 @@ const Footer = ({ className }: { className?: string }) => {
             <img 
               src={logoTransparent} 
               alt="Ganhe Tempo Logística" 
-              className="h-32 w-auto object-contain mb-4"
+              className="h-40 md:h-48 w-auto object-contain mb-4 -ml-2"
             />
             <p className="mb-4 text-primary-foreground/80">
               Logística inteligente para empresas que valorizam cada entrega.
