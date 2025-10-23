@@ -3,16 +3,9 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import * as LucideIcons from "lucide-react";
+import { Camera } from "lucide-react";
 
 interface BlogPostFormProps {
   onSuccess: () => void;
@@ -29,16 +22,16 @@ const BlogPostForm = ({ onSuccess, onCancel }: BlogPostFormProps) => {
   });
   const [loading, setLoading] = useState(false);
 
-  const iconNames = [
-    "Package",
-    "TrendingUp",
-    "Route",
-    "Truck",
-    "Clock",
-    "ShieldCheck",
-    "Zap",
-    "Target",
-  ];
+  const handleImageCapture = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, featured_image_url: reader.result as string });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const generateSlug = (title: string) => {
     return title
@@ -122,35 +115,23 @@ const BlogPostForm = ({ onSuccess, onCancel }: BlogPostFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="image">URL da Imagem (opcional)</Label>
-        <Input
-          id="image"
-          type="url"
-          value={formData.featured_image_url}
-          onChange={(e) =>
-            setFormData({ ...formData, featured_image_url: e.target.value })
-          }
-          placeholder="https://exemplo.com/imagem.jpg"
-        />
-      </div>
-
-      <div>
-        <Label htmlFor="icon">Ícone</Label>
-        <Select
-          value={formData.icon_name}
-          onValueChange={(value) => setFormData({ ...formData, icon_name: value })}
-        >
-          <SelectTrigger id="icon">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {iconNames.map((iconName) => (
-              <SelectItem key={iconName} value={iconName}>
-                {iconName}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <Label htmlFor="image">Imagem (opcional)</Label>
+        <div className="flex gap-2">
+          <Input
+            id="image"
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleImageCapture}
+            className="flex-1"
+          />
+          <Button type="button" variant="outline" size="icon" onClick={() => document.getElementById('image')?.click()}>
+            <Camera className="h-4 w-4" />
+          </Button>
+        </div>
+        {formData.featured_image_url && (
+          <img src={formData.featured_image_url} alt="Preview" className="mt-2 max-h-40 rounded-md" />
+        )}
       </div>
 
       <div className="flex gap-2 justify-end">
